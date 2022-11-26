@@ -9,7 +9,7 @@ void renderingThread(sf::RenderWindow *window, bool &closingWindow) {
     window->setActive(true);
 
     sf::Texture marbleTex;
-    marbleTex.loadFromFile("marble.png");
+    marbleTex.loadFromFile("res/textures/marble.png");
     marbleTex.setSmooth(true);
 
     sf::Sprite marbleSpr;
@@ -18,7 +18,7 @@ void renderingThread(sf::RenderWindow *window, bool &closingWindow) {
     marbleSpr.setPosition(400,300);
 
     sf::Font font;
-    font.loadFromFile("fira-code.ttf");
+    font.loadFromFile("res/fonts/fira-code.ttf");
     sf::Text info, help;
     info.setFont(font);
     info.setCharacterSize(15);
@@ -30,7 +30,7 @@ void renderingThread(sf::RenderWindow *window, bool &closingWindow) {
     help.setString("Use arrow keys to move, + - to resize, 1 2 3 to change colour.");
     help.setPosition(5, 580);
 
-    u_char R=0,G=0,B=0;
+    u_char R=255,G=255,B=255;
     float scale = 1.f;
     while(!closingWindow) {
         
@@ -74,7 +74,7 @@ void renderingThread(sf::RenderWindow *window, bool &closingWindow) {
 
 int main() {
 
-    sf::RenderWindow window(sf::VideoMode(800,600), "Arch-SFML");
+    sf::RenderWindow window(sf::VideoMode(800,600), "SFML-learning");
     window.setActive(false);
 
     bool closingWindow = false;
@@ -97,7 +97,7 @@ int main() {
                     
                     if(event.key.code == sf::Keyboard::Escape) {
 
-                        std::cout << "Closing through ESC...\n";
+                        std::cout << "Closing with ESC...\n";
                         closingWindow = true;
                         Renderer.join();
                         window.close();
